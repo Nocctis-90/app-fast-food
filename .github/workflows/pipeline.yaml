@@ -147,8 +147,8 @@ jobs:
     #     
     - name: DOCKER BUILD AND PUSH
       run: |
-        docker build -t vitor-avanco/appfastfood:latest .
-        docker push vitor-avanco/appfastfood:latest
+        docker build -t Nocctis-90/appfastfood:latest .
+        docker push Nocctis-90/appfastfood:latest
 
   deploy-eks:
     runs-on: ubuntu-latest
