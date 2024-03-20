@@ -147,8 +147,8 @@ jobs:
     #     
     - name: DOCKER BUILD AND PUSH
       run: |
-        docker build -t nocctis-90/appfastfood:latest .
-        docker push nocctis-90/appfastfood:latest
+        docker build -t montjon/appfastfood:latest .
+        docker push montjon/appfastfood:latest
 
   deploy-eks:
     runs-on: ubuntu-latest
@@ -176,4 +176,3 @@ jobs:
         kubectl get svc
         kubectl get deployments
         kubectl describe pod appfastfood-deployment-648659bfb5-c4zg7
-        
