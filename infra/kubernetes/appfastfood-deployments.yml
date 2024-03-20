@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: appfastfood
-          image: vitoravanco/appfastfood:2.0.0
+          image: montjon/appfastfood:latest
           imagePullPolicy: IfNotPresent
           resources:
             requests:

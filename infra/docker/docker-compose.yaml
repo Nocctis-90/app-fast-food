@@ -1,6 +1,6 @@
 services:
   app-fastfood:
-    image: vitoravanco/appfastfood:2.0.0
+    image: montjon/appfastfood:latest
     networks:
       - techchallenge-fastfood-net
     ports:
