@@ -176,3 +176,4 @@ jobs:
         kubectl get svc
         kubectl get deployments
         kubectl describe pod appfastfood-deployment-648659bfb5-c4zg7
+        
