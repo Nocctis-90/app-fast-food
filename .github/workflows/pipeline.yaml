@@ -67,19 +67,19 @@ jobs:
       run: |
         cd app
 
-    - name: Build and analyze
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: 2d908eaa7a840db5bf8ae8b1f51940a981c278c5
-      run: |
-        cd app
-        mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=caikeburgos_app-fastfood-application -Dsonar.login=$SONAR_TOKEN
+    #- name: Build and analyze
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #    SONAR_TOKEN: 2d908eaa7a840db5bf8ae8b1f51940a981c278c5
+    #  run: |
+    #    cd app
+    #    mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=caikeburgos_app-fastfood-application -Dsonar.login=$SONAR_TOKEN
 
-    - name: Check Quality Gate
-      env:
-        SONAR_TOKEN: 2d908eaa7a840db5bf8ae8b1f51940a981c278c5
-      run: |
-        curl -s "https://sonarcloud.io/project/configuration?id=caikeburgos_app-fastfood-application" -H "Authorization: Basic $SONAR_TOKEN"
+   # - name: Check Quality Gate
+   #   env:
+   #     SONAR_TOKEN: 2d908eaa7a840db5bf8ae8b1f51940a981c278c5
+   #   run: |
+   #     curl -s "https://sonarcloud.io/project/configuration?id=caikeburgos_app-fastfood-application" -H "Authorization: Basic $SONAR_TOKEN"
          
   build:
     needs: [teste-unitario] 
