@@ -170,7 +170,7 @@ jobs:
       run: |
         aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster
         kubectl apply --validate=false -f infra/kubernetes
-        kubectl get nodes
+        kubectl get nodes -v=10
         kubectl get pods
         kubectl get deployments
         
