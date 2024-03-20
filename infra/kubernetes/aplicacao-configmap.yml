@@ -3,6 +3,4 @@ kind: ConfigMap
 metadata:
   name: appfastfood-configmap
 data:
-  SPRING_PROFILES_ACTIVE: DEV
-  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/appfastfood
   JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,address=*:5005,server=y,suspend=n"
