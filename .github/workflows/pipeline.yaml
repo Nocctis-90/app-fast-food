@@ -150,28 +150,29 @@ jobs:
         docker build -t vitor-avanco/appfastfood:latest .
         docker push vitor-avanco/appfastfood:latest
 
- # deploy-eks:
- #   runs-on: ubuntu-latest
- #   needs: 
- #    - publish-docker
+  deploy-eks:
+    runs-on: ubuntu-latest
+    needs: 
+     - publish-docker
 
- #   steps:
- #   - name: Checkout code
- #     uses: actions/checkout@v2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
- #   - name: Set up AWS CLI
- #     uses: aws-actions/configure-aws-credentials@v4.0.1
- #     with:
- #       role-to-assume: arn:aws:iam::101478099523:role/deploy_lambda_dynamo
- #       aws-region: us-east-1 # Substitua pela sua região
+    - name: Set up AWS CLI
+      uses: aws-actions/configure-aws-credentials@v4.0.1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1  # Substitua pela sua região desejada
 
-  #  - name: Deploy to EKS
-  #    run: |
-  #      aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster
-  #      kubectl apply -f infra
-  #      kubectl config view
-  #      kubectl get nodes
-  #      kubectl get pods
-  #      kubectl get svc
-  #      kubectl get deployments
-  #      kubectl describe pod appfastfood-deployment-648659bfb5-c4zg7
+    - name: Deploy to EKS
+      run: |
+        aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster
+        kubectl apply -f infra
+        kubectl config view
+        kubectl get nodes
+        kubectl get pods
+        kubectl get svc
+        kubectl get deployments
+        kubectl describe pod appfastfood-deployment-648659bfb5-c4zg7
