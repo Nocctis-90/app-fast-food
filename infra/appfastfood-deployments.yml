@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appfastfood-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appfastfood
+  template:
+    metadata:
+      labels:
+        app: appfastfood
+    spec:
+      containers:
+        - name: appfastfood
+          image: caikemury/appfastfood:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: appfastfood-configmap
+          readinessProbe:
+            httpGet:
+              path: /healthCheck   # Rota de verificação de saúde do seu aplicativo
+              port: 8080            # Porta em que o seu aplicativo está ouvindo
+            initialDelaySeconds: 10
+            periodSeconds: 5

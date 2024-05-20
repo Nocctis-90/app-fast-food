@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "7d8a6317-261c-48a4-bf5e-f6bb7721af5b",
+		"name": "Jsons de Exemplo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28100404",
+		"_collection_link": "https://cloudy-satellite-653183.postman.co/workspace/fghf~cdd0d0f1-3080-4e13-a08c-dbb39612156c/collection/28100404-7d8a6317-261c-48a4-bf5e-f6bb7721af5b?action=share&source=collection_link&creator=28100404"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\" : \"João Silva\",\r\n    \"cpf\" : \"12345678900\",\r\n    \"email\" : \"joaosilva@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/clientes/12345678900"
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Produto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"nome\": \"Pepsi\",\r\n \"preco\": 5,\r\n \"uri_imagem\": \"https://localhost:8080/\",\r\n \"categoria\": \"bebida\",\r\n \"descricao\": \"bebida\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Produtos Por Categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/produtos?categoria=bebida",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produtos"
+					],
+					"query": [
+						{
+							"key": "categoria",
+							"value": "bebida"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Produto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Pepsiv\",\r\n    \"preco\": 5.0,\r\n    \"uriImagem\": \"https://localhost:8080/\",\r\n    \"categoria\": \"bebida\",\r\n    \"descricao\": \"bebida\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/produtos/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Produto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "localhost:8080/produtos/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n  \"produtos\": [\r\n    {\r\n      \"id_produto\": 1,\r\n      \"quantidade_produto\" : \"2\"\r\n    },\r\n    {\r\n        \"id_produto\": 2,\r\n        \"quantidade_produto\" : \"2\"\r\n    }\r\n  ],\r\n  \"id_cliente\": \"12345689700\",\r\n  \"valor_total\": 15.0,\r\n  \"status\": \"RECEBIDO\",\r\n  \"tempo_espera\": \"01:00\",\r\n  \"id_pedido\": \"456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/pedidos"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Todos Os Pedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/pedidos"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Pedido Por ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/pedidos/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Status do Pedido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "localhost:8080/pedidos/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Status do Pagamento",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/pedidos/status_pagamento/1"
+			},
+			"response": []
+		}
+	]
+}

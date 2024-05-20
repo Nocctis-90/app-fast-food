@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  localhost.localstack.cloud:
+    image: localstack/localstack
+    ports:
+      - "4566:4566" # LocalStack SNS endpoint
+    environment:
+      - SERVICES=sns
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - CLEAR_TMP_FOLDER=0
+    volumes:
+      - "./localstack-data:/tmp/localstack/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - mynetwork
+
+  fastfood-produtos:
+    image: fastfood-produtos
+    ports:
+      - "8081:8081"
+    depends_on:
+      - localhost.localstack.cloud
+    networks:
+      - mynetwork
+
+  fastfood:
+    image: fastfood
+    ports:
+      - "8888:8888"
+    depends_on:
+      - localhost.localstack.cloud
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+
